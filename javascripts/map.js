@@ -55,7 +55,7 @@ require([
 
 			
 			// Initialize the dgrid
-    var gridQuakes = new (declare([Grid, Selection]))({
+    var grid = new (declare([Grid, Selection]))({
       bufferRows : Infinity,
       loadingMessage:"Lodaing data ...",
       noDataMessage:"No data rec",
@@ -69,9 +69,9 @@ require([
       }
     }, "table2");
 			
-	gridQuakes.on(".dgrid-row:click",function(evt){
+	grid.on(".dgrid-row:click",function(evt){
 		console.log(evt);
-		var row = gridQuakes.row(evt);
+		var row = grid.row(evt);
 		console.log(row);
 		row.element.style.backgroundColor = "#27ae60";
 	});
@@ -112,7 +112,7 @@ require([
 			
 			
 			mapMain.on("click",function(evt){
-				gridQuakes.set("store", "");
+				grid.set("store", "");
 				var clickSpt = evt.mapPoint
 				var buffPoly = geomeng.buffer(clickSpt,10)
 				console.log(buffPoly);
@@ -181,7 +181,7 @@ require([
       var memStore = new Memory({
         data : dataQuakes
       });
-      gridQuakes.set("store", memStore);
+      grid.set("store", memStore);
     }
 				
 				
