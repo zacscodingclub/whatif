@@ -112,6 +112,7 @@ require([
 			
 			
 			mapMain.on("click",function(evt){
+				mapMain.graphics.clear();  //  Clears buffer on new click
 				grid.set("store", "");
 				var clickSpt = evt.mapPoint
 				var buffPoly = geomeng.buffer(clickSpt,10)
